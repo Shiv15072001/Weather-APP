@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/7225/7225855.png" alt="" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                <b>Weather-X</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about" id="alert-button">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="Del">Delhi</a></li>
+                            <li><a class="dropdown-item" href="#" id="Jam">Jamshedpur</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="Mum">Mumbai</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-lg btn-secondary bg-secondary mx-3" data-bs-toggle="popover"
+                            data-bs-title="Weather-X"
+                            data-bs-content="Hello Users 😊, To Use this Weather-X App You Only Need to Search Your City.">Usage
+                            Guide</button>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="input"
+                        pattern="[a-zA-Z0-9]+" required>
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+                <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert" id="ale">
+                    <strong>Welcome to the Weather-X App.</strong> Enter you City name to know about its weather condition.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div> -->
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <h1 class="text-center my-4 text-secondary bg-light">Weather For <span id="cities" class="text-dark"></span>
+        </h1>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div id="t1" class="card mb-4 rounded-3 shadow-sm border-warning">
+                        <div id="t2" class="card-header py-3 text-bg-warning border-warning">
+                            <h4 class="my-0 fw-normal">Temperature</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title" id="Temp1">
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Temperature is <span id="Temp"></span></li>
+                                <li>Min Temperature is <span id="Min_temp"></span></li>
+                                <li>Max Temperature is <span id="Max_temp"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="w1" class="card mb-4 rounded-3 shadow-sm border-success">
+                        <div id="w2" class="card-header py-3 text-bg-success border-success">
+                            <h4 class="my-0 fw-normal">Wind</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title" id="Wind_speed1"><small>KM/hr</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Wind Speed is <span id="Wind_speed"></span></li>
+                                <li>Wind Degrees is <span id="Wind_degrees"></span></li>
+                                <li>Feels like is <span id="Feels_like"></span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="H1" class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div id="H2" class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Humidity</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title" id="Humidity1"><small
+                                    class="text-muted fw-light"></small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Humidity is <span id="Humidity"></span></li>
+                                <li>Sunrise time is <span id="Sunrise"></span></li>
+                                <li>Sunset time is <span id="Sunset"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="display-6 text-center mb-4"><b><i>Weather <span>Reports</span></i></b></h2>
+
+            <div class="table-responsive">
+                <table class="table text-center table-light table-bordered">
+                    <thead class="table-dark table-bordered border-dark">
+                        <tr>
+                            <th scope="col" class="table-dark table-bordered border-dark" style="width: 25%">Cities /
+                                Reports</th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">Cloud pct
+                            </th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">Feels
+                                like</th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">Humidity
+                            </th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">
+                                Temperature</th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">Wind
+                                Degrees</th>
+                            <th scope="col" class="table-info table-bordered border-dark" style="width: 12.5%">Wind
+                                Speed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Delhi</th>
+                            <td class="table-secondary" id="Cloud_pct11">1</td>
+                            <td class="table-secondary" id="Feels_like11">2</td>
+                            <td class="table-secondary" id="Humidity11">3</td>
+                            <td class="table-secondary" id="Temp11">8</td>
+                            <td class="table-secondary" id="Wind_degrees11">9</td>
+                            <td class="table-secondary" id="Wind_speed11">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Jamshedpur</th>
+                            <td id="Cloud_pct12">1</td>
+                            <td id="Feels_like12">2</td>
+                            <td id="Humidity12">3</td>
+                            <td id="Temp12">8</td>
+                            <td id="Wind_degrees12">9</td>
+                            <td id="Wind_speed12">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Kolkata</th>
+                            <td class="table-secondary" id="Cloud_pct13">1</td>
+                            <td class="table-secondary" id="Feels_like13">2</td>
+                            <td class="table-secondary" id="Humidity13">3</td>
+                            <td class="table-secondary" id="Temp13">8</td>
+                            <td class="table-secondary" id="Wind_degrees13">9</td>
+                            <td class="table-secondary" id="Wind_speed13">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Chennai</th>
+                            <td id="Cloud_pct14">1</td>
+                            <td id="Feels_like14">2</td>
+                            <td id="Humidity14">3</td>
+                            <td id="Temp14">8</td>
+                            <td id="Wind_degrees14">9</td>
+                            <td id="Wind_speed14">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Bangalore</th>
+                            <td class="table-secondary" id="Cloud_pct15">1</td>
+                            <td class="table-secondary" id="Feels_like15">2</td>
+                            <td class="table-secondary" id="Humidity15">3</td>
+                            <td class="table-secondary" id="Temp15">8</td>
+                            <td class="table-secondary" id="Wind_degrees15">9</td>
+                            <td class="table-secondary" id="Wind_speed15">10</td>
+                        </tr>
+                        <tr class="border-bottom">
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Gujrat</th>
+                            <td id=Cloud_pct16>1</td>
+                            <td id=Feels_like16>2</td>
+                            <td id=Humidity16>3</td>
+                            <td id=Temp16>8</td>
+                            <td id=Wind_degrees16>9</td>
+                            <td id=Wind_speed16>10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start table-info  table-bordered border-dark">Ahmedabad</th>
+                            <td class="table-secondary" id="Cloud_pct17">1</td>
+                            <td class="table-secondary" id="Feels_like17">2</td>
+                            <td class="table-secondary" id="Humidity17">3</td>
+                            <td class="table-secondary" id="Temp17">8</td>
+                            <td class="table-secondary" id="Wind_degrees17">9</td>
+                            <td class="table-secondary" id="Wind_speed17">10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+
+</html>

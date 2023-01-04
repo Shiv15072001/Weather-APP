@@ -1,0 +1,4 @@
+To run this code in my code editor environment i had followed the following steps:
+
+1) Download the RAPID API extension in your code editor(optional)
+2) go to RAPID API website and sign in with your account and search for weather API
